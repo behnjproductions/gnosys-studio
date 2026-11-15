@@ -18,12 +18,12 @@ body{background:var(--bg);color:var(--ink);font-family:"Inter Tight",Inter,syste
 a{color:inherit;text-decoration:none}
 img,video{display:block;width:100%;height:100%;object-fit:cover}
 :focus-visible{outline:2px solid var(--red);outline-offset:3px}
-.grain{position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:gr 1s steps(4) infinite}
+.grain{position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 @keyframes gr{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}100%{transform:translate(0,0)}}
 
 /* curtain */
-.curtain{position:fixed;inset:0;z-index:200;background:#000;display:grid;place-items:center;transition:opacity .9s ease .2s,visibility 0s linear 1.1s}
-.curtain span{font-weight:500;font-size:clamp(28px,5vw,64px);letter-spacing:.6em;padding-left:.6em;opacity:0;animation:cin 1.6s cubic-bezier(.16,1,.3,1) .1s forwards}
+.curtain{position:fixed;inset:0;z-index:200;background:#000;display:grid;place-items:center;transition:opacity .45s ease,visibility 0s linear .45s}
+.curtain span{font-weight:500;font-size:clamp(28px,5vw,64px);letter-spacing:.6em;padding-left:.6em;opacity:0;animation:cin .8s cubic-bezier(.16,1,.3,1) forwards}
 @keyframes cin{from{opacity:0;letter-spacing:1.2em}to{opacity:1;letter-spacing:.35em}}
 .ready .curtain{opacity:0;visibility:hidden}
 
@@ -142,6 +142,7 @@ footer{border-top:1px solid var(--line);padding:clamp(56px,9vh,96px) var(--pad) 
 .rv.in>*:nth-child(2){transition-delay:.12s}.rv.in>*:nth-child(3){transition-delay:.24s}
 
 @media (max-width:860px){
+ .grain{display:none}
  .nav ul li:nth-child(2){display:none}
  .bar{height:9vh}.hint{bottom:calc(9vh + 12px)}.cta{bottom:calc(9vh + 84px)}.tc,.rec{top:calc(9vh + 12px)}
  .film{height:150vh}
@@ -172,7 +173,7 @@ footer{border-top:1px solid var(--line);padding:clamp(56px,9vh,96px) var(--pad) 
 <main id="top">
 <section class="scrub" aria-label="Bande-annonce">
  <div class="pin">
-  <video id="hv" src="media/reel.mp4" poster="media/poster.jpg" autoplay muted loop playsinline preload="auto"></video>
+  <video id="hv" data-d="media/reel.mp4" data-m="media/reel_m.mp4" poster="media/poster.jpg" autoplay muted loop playsinline preload="auto"></video>
   <div class="shade"></div>
   <div class="bar t"></div><div class="bar b"></div>
   <div class="rec"><i></i>GNOSYS STUDIO</div>
@@ -190,7 +191,7 @@ footer{border-top:1px solid var(--line);padding:clamp(56px,9vh,96px) var(--pad) 
 <div id="films">
  <section class="film">
   <div class="pin">
-   <video src="media/run_loop.mp4" poster="media/run.jpg" muted loop playsinline preload="metadata"></video>
+   <video data-d="media/run_loop.mp4" data-m="media/run_loop_m.mp4" poster="media/run.jpg" muted loop playsinline preload="none"></video>
    <div class="top"><span>SPORTSWEAR</span><span>30 S · 16:9</span></div>
    <div class="cap">
     <div><div class="meta"><b>●</b><span>Chaussures et lunettes de course</span></div><h2>Chaque<br>foulée</h2><p>Du réveil difficile au premier kilomètre au lever du soleil. Chaque plan suit un détail : le laçage, les verres, le pas sur la piste.</p></div>
@@ -200,7 +201,7 @@ footer{border-top:1px solid var(--line);padding:clamp(56px,9vh,96px) var(--pad) 
  </section>
  <section class="film">
   <div class="pin">
-   <video src="media/burger_loop.mp4" poster="media/burger.jpg" muted loop playsinline preload="metadata"></video>
+   <video data-d="media/burger_loop.mp4" data-m="media/burger_loop_m.mp4" poster="media/burger.jpg" muted loop playsinline preload="none"></video>
    <div class="top"><span>FOOD</span><span>30 S · 16:9</span></div>
    <div class="cap">
     <div><div class="meta"><b>●</b><span>Burger volcanique</span></div><h2>Volcán</h2><p>Crevettes, ananas grillé, fromage fondu et pain rouge braisé. Flammes, gros plans de texture et une première bouchée qui fait tout le travail.</p></div>
@@ -210,7 +211,7 @@ footer{border-top:1px solid var(--line);padding:clamp(56px,9vh,96px) var(--pad) 
  </section>
  <section class="film">
   <div class="pin">
-   <video src="media/appel_loop.mp4" poster="media/appel.jpg" muted loop playsinline preload="metadata"></video>
+   <video data-d="media/appel_loop.mp4" data-m="media/appel_loop_m.mp4" poster="media/appel.jpg" muted loop playsinline preload="none"></video>
    <div class="top"><span>AUTOMOBILE</span><span>30 S · 16:9</span></div>
    <div class="cap">
     <div><div class="meta"><b>●</b><span>Camionnette, Côte-Nord</span></div><h2>L'Appel</h2><p>Un fils, un père, un appel. La route de la Côte-Nord, du port au coucher du soleil, avec une camionnette rouge comme fil conducteur.</p></div>
@@ -255,7 +256,7 @@ footer{border-top:1px solid var(--line);padding:clamp(56px,9vh,96px) var(--pad) 
 </section>
 
 <section class="contact" id="contact">
- <video src="media/burger_loop.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+ <video data-d="media/burger_loop.mp4" data-m="media/burger_loop_m.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
  <h3 class="rv"><span>Votre produit mérite son film.</span></h3>
  <div class="row rv"><a class="btn red" href="mailto:contact@behnjphoto.com?subject=Projet%20Gnosys%20Studio">Demander un devis</a><a class="btn" href="https://www.behance.net/gnosysstudio" target="_blank" rel="noopener">Voir le portfolio Behance</a></div>
 </section>
@@ -284,8 +285,10 @@ footer{border-top:1px solid var(--line);padding:clamp(56px,9vh,96px) var(--pad) 
 <script>
 (function(){
  var RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- window.addEventListener('load',function(){setTimeout(function(){document.body.classList.add('ready')},RM?0:1300)});
- setTimeout(function(){document.body.classList.add('ready')},3500);
+ var MOB=window.matchMedia('(max-width: 860px)').matches||(navigator.connection&&navigator.connection.saveData);
+ function src(v){return MOB?v.dataset.m:v.dataset.d;}
+ var hv0=document.getElementById('hv');hv0.src=src(hv0);
+ setTimeout(function(){document.body.classList.add('ready')},RM?0:1100);
 
  /* statement words */
  var st=document.getElementById('stmt');
@@ -295,7 +298,7 @@ footer{border-top:1px solid var(--line);padding:clamp(56px,9vh,96px) var(--pad) 
  /* reveals + film loops */
  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');}})},{threshold:.2});
  document.querySelectorAll('.rv,.film').forEach(function(el){io.observe(el)});
- var vo=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){if(v.preload==='none'||v.preload==='metadata')v.preload='auto';v.play().catch(function(){});}else{v.pause();}})},{threshold:.15});
+ var vo=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){if(!v.getAttribute('src')){v.src=src(v);v.preload='auto';}v.play().catch(function(){});}else{v.pause();}})},{rootMargin:'60% 0px'});
  document.querySelectorAll('.film video,.contact video').forEach(function(v){vo.observe(v)});
 
  /* scrub hero */
