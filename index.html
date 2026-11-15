@@ -176,11 +176,6 @@ footer{border-top:1px solid var(--line);padding:clamp(56px,9vh,96px) var(--pad) 
   <div class="bar t"></div><div class="bar b"></div>
   <div class="rec"><i></i>GNOSYS STUDIO</div>
   <div class="tc" id="tc">00:00:00</div>
-  <div class="lines">
-   <p class="on">Une seconde.</p>
-   <p>Pour arrêter le pouce.</p>
-   <p>Chaque détail <em>compte.</em></p>
-  </div>
   <div class="cta"><a class="btn red" href="#films">▶&nbsp; Voir les films</a><a class="btn" href="#contact">Demander un devis</a></div>
   <a class="hint" id="hint" href="#films" aria-label="Défiler vers les films"><span class="mouse"><i></i></span>Défilez pour découvrir</a>
  </div>
@@ -295,7 +290,7 @@ footer{border-top:1px solid var(--line);padding:clamp(56px,9vh,96px) var(--pad) 
  document.querySelectorAll('.film video,.contact video').forEach(function(v){vo.observe(v)});
 
  /* scrub hero */
- var sc=document.querySelector('.scrub'),hv=document.getElementById('hv'),lines=document.querySelectorAll('.lines p'),bars=document.querySelectorAll('.bar'),hint=document.getElementById('hint'),tc=document.getElementById('tc');
+ var sc=document.querySelector('.scrub'),hv=document.getElementById('hv'),bars=document.querySelectorAll('.bar'),hint=document.getElementById('hint'),tc=document.getElementById('tc');
  var cur=0,tgt=0;
  hv.play().catch(function(){});
  /* hs */
@@ -305,7 +300,6 @@ footer{border-top:1px solid var(--line);padding:clamp(56px,9vh,96px) var(--pad) 
  function frame(){
   if(!RM){
    var t=hv.currentTime||0,s=Math.floor(t),f=Math.floor((t-s)*24);tc.textContent='00:00:'+(s<10?'0':'')+s+':'+(f<10?'0':'')+f;
-   var idx=Math.floor(performance.now()/2600)%3;lines.forEach(function(l,i){l.classList.toggle('on',i===idx)});
    hint.style.opacity=scrollY>40?0:1;
    var hp=prog(hs),max=tr.scrollWidth-innerWidth;hxt=hp*max;hx+=(hxt-hx)*.1;tr.style.transform='translate3d('+(-hx)+'px,0,0)';pb.style.width=(hp*100)+'%';
    cnt.textContent=Math.min(8,Math.floor(hp*7.999)+1)+' / 8';
